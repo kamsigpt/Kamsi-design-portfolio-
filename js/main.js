@@ -255,14 +255,14 @@
       });
     });
 
-    // Featured designs blocks
-    gsap.utils.toArray('.featured-block').forEach((block) => {
-      gsap.from(block, {
-        y: 50,
+    // Featured collage
+    gsap.utils.toArray('.collage-tile').forEach((tile) => {
+      gsap.from(tile, {
+        y: 40,
         opacity: 0,
-        duration: 0.9,
+        duration: 0.8,
         ease: 'power3.out',
-        scrollTrigger: { trigger: block, start: 'top 85%', toggleActions: 'play none none none' },
+        scrollTrigger: { trigger: tile, start: 'top 88%', toggleActions: 'play none none none' },
       });
     });
 

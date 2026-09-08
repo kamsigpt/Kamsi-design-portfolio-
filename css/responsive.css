@@ -183,7 +183,7 @@
     align-items: flex-start;
   }
 
-  .featured-grid {
+  .featured-collage {
     grid-template-columns: 1fr;
   }
 
@@ -279,8 +279,8 @@
     --gutter: 1rem;
   }
 
-  .featured-tiles {
-    grid-template-columns: 1fr;
+  .collage-tile-image {
+    aspect-ratio: 16 / 9;
   }
 
   .contact-modal-panel {
