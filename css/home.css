@@ -340,7 +340,6 @@
   text-transform: uppercase;
   color: var(--clr-text-primary);
   margin-bottom: var(--sp-lg);
-  grid-column: 1 / -1;
 }
 
 .intro-text {
@@ -361,7 +360,9 @@
 }
 
 .intro-visual {
-  position: relative;
+  position: sticky;
+  top: var(--sp-4xl);
+  align-self: start;
   aspect-ratio: 4 / 5;
   background: linear-gradient(135deg, var(--clr-bg-medium), var(--clr-surface));
   border-radius: var(--radius-lg);
@@ -386,9 +387,9 @@
 }
 
 .disciplines-label {
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-semibold);
-  letter-spacing: var(--ls-widest);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-black);
+  letter-spacing: var(--ls-wide);
   text-transform: uppercase;
   color: var(--clr-text-primary);
   margin-bottom: var(--sp-3xl);
@@ -445,17 +446,11 @@
 
 .discipline-desc {
   font-size: var(--fs-sm);
+  line-height: var(--lh-relaxed);
   color: var(--clr-text-muted);
-  max-width: 320px;
+  max-width: 430px;
   text-align: right;
-  opacity: 0;
-  transform: translateX(20px);
-  transition: opacity var(--tr-smooth), transform var(--tr-smooth);
-}
-
-.discipline-item:hover .discipline-desc {
-  opacity: 1;
-  transform: translateX(0);
+  margin-left: auto;
 }
 
 /* ---- Selected Work ---- */
@@ -474,9 +469,9 @@
 }
 
 .section-label {
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-semibold);
-  letter-spacing: var(--ls-widest);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-black);
+  letter-spacing: var(--ls-wide);
   text-transform: uppercase;
   color: var(--clr-text-primary);
 }
@@ -492,8 +487,15 @@
   margin-inline: auto;
   padding-inline: var(--gutter);
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: var(--sp-lg);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-sm);
+  align-items: stretch;
+}
+
+.selected-grid .work-item {
+  grid-column: auto;
+  aspect-ratio: 4 / 3;
+  border: 1px solid rgba(91, 46, 255, 0.2);
 }
 
 /* ---- Work Items (shared for both pages) ---- */
@@ -612,33 +614,25 @@
   transform: translateY(0);
 }
 
-/* ---- Credentials ---- */
+/* ---- Experience Counter ---- */
 .credentials {
-  padding: var(--sp-section-sm) 0;
+  padding: var(--sp-3xl) 0;
   border-top: 1px solid var(--clr-border);
   border-bottom: 1px solid var(--clr-border);
 }
 
-.cred-item {
+.cred-timer {
   max-width: var(--max-width);
   margin-inline: auto;
   padding-inline: var(--gutter);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--sp-4xl);
-  padding-top: var(--sp-2xl);
-  padding-bottom: var(--sp-2xl);
+  text-align: center;
+  gap: var(--sp-lg);
 }
 
-.cred-number {
-  font-size: var(--fs-3xl);
-  font-weight: var(--fw-extrabold);
-  color: var(--clr-text-primary);
-  line-height: 1;
-  min-width: 80px;
-}
-
-.cred-label {
+.cred-timer-label {
   font-size: var(--fs-xs);
   font-weight: var(--fw-medium);
   letter-spacing: var(--ls-widest);
@@ -646,9 +640,47 @@
   color: var(--clr-text-muted);
 }
 
-.cred-text {
-  font-size: var(--fs-sm);
+.cred-timer-counter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--sp-md);
+}
+
+.timer-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 84px;
+}
+
+.timer-number {
+  font-size: var(--fs-4xl);
+  font-weight: var(--fw-black);
+  line-height: 1;
+  color: var(--clr-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-unit-label {
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+  margin-top: var(--sp-xs);
+}
+
+.timer-sep {
+  font-size: var(--fs-3xl);
   font-weight: var(--fw-medium);
+  color: var(--clr-text-muted);
+  line-height: 1;
+  padding-top: var(--sp-2xs);
+}
+
+.cred-timer-caption {
+  font-size: var(--fs-sm);
   color: var(--clr-text-secondary);
   letter-spacing: var(--ls-wide);
 }
@@ -683,8 +715,9 @@
 }
 
 .cta-link {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--sp-sm);
   font-size: var(--fs-lg);
   font-weight: var(--fw-medium);
@@ -694,6 +727,7 @@
   border-radius: var(--radius-full);
   transition: all var(--tr-base);
   text-align: center;
+  width: max-content;
   margin-inline: auto;
   margin-bottom: var(--sp-xl);
 }

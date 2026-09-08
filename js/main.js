@@ -23,6 +23,7 @@
 
     initNavigation();
     initAccessibility();
+    initExperienceTimer();
 
     if (prefersReducedMotion) {
       revealAllImmediately();
@@ -253,14 +254,13 @@
       });
     });
 
-    // Credentials
-    gsap.utils.toArray('.cred-item').forEach((item, i) => {
+    // Experience counter
+    gsap.utils.toArray('.cred-timer').forEach((item) => {
       gsap.from(item, {
         y: 40,
         opacity: 0,
         duration: 0.8,
         ease: 'power3.out',
-        delay: i * 0.12,
         scrollTrigger: { trigger: item, start: 'top 90%', toggleActions: 'play none none none' },
       });
     });
@@ -330,7 +330,6 @@
     if (isTouchDevice || prefersReducedMotion) return;
 
     document.querySelectorAll('.discipline-item').forEach((item) => {
-      const desc = item.querySelector('.discipline-desc');
       const number = item.querySelector('.discipline-number');
 
       item.addEventListener('mouseenter', () => {
@@ -339,9 +338,6 @@
           duration: 0.35,
           ease: 'power2.out',
         });
-        if (desc) {
-          gsap.to(desc, { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out' });
-        }
         if (number) {
           gsap.to(number, { scale: 1.1, duration: 0.3, ease: 'power2.out' });
         }
@@ -353,9 +349,6 @@
           duration: 0.35,
           ease: 'power2.out',
         });
-        if (desc) {
-          gsap.to(desc, { opacity: 0, y: 10, duration: 0.3, ease: 'power2.in' });
-        }
         if (number) {
           gsap.to(number, { scale: 1, duration: 0.3, ease: 'power2.out' });
         }
@@ -793,6 +786,68 @@
     document.addEventListener('mousedown', () => {
       document.body.classList.remove('using-keyboard');
     });
+  }
+
+  // ── 15.5 EXPERIENCE TIMER ────────────────────────────────
+  function initExperienceTimer() {
+    const els = {
+      years: document.getElementById('timerYears'),
+      months: document.getElementById('timerMonths'),
+      days: document.getElementById('timerDays'),
+      hours: document.getElementById('timerHours'),
+      minutes: document.getElementById('timerMinutes'),
+      seconds: document.getElementById('timerSeconds'),
+    };
+    if (!els.years) return;
+
+    const startDate = new Date(2023, 2, 11);
+
+    function pad(n) {
+      return String(n).padStart(2, '0');
+    }
+
+    function tick() {
+      const now = new Date();
+      let years = now.getFullYear() - startDate.getFullYear();
+      let months = now.getMonth() - startDate.getMonth();
+      let days = now.getDate() - startDate.getDate();
+      let hours = now.getHours() - startDate.getHours();
+      let minutes = now.getMinutes() - startDate.getMinutes();
+      let seconds = now.getSeconds() - startDate.getSeconds();
+
+      if (seconds < 0) {
+        seconds += 60;
+        minutes -= 1;
+      }
+      if (minutes < 0) {
+        minutes += 60;
+        hours -= 1;
+      }
+      if (hours < 0) {
+        hours += 24;
+        days -= 1;
+      }
+      if (days < 0) {
+        const prevMonthIdx = (now.getMonth() - 1 + 12) % 12;
+        const prevYear = now.getMonth() === 0 ? now.getFullYear() - 1 : now.getFullYear();
+        days += new Date(prevYear, prevMonthIdx + 1, 0).getDate();
+        months -= 1;
+      }
+      if (months < 0) {
+        months += 12;
+        years -= 1;
+      }
+
+      if (els.years) els.years.textContent = pad(years);
+      if (els.months) els.months.textContent = pad(months);
+      if (els.days) els.days.textContent = pad(days);
+      if (els.hours) els.hours.textContent = pad(hours);
+      if (els.minutes) els.minutes.textContent = pad(minutes);
+      if (els.seconds) els.seconds.textContent = pad(seconds);
+    }
+
+    tick();
+    setInterval(tick, 1000);
   }
 
   // ── 16. PERFORMANCE CLEANUP ──────────────────────────────
