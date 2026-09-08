@@ -24,6 +24,7 @@
     initNavigation();
     initAccessibility();
     initExperienceTimer();
+    initContactModal();
 
     if (prefersReducedMotion) {
       revealAllImmediately();
@@ -251,6 +252,17 @@
         duration: isFull ? 1.2 : 1,
         ease: 'power3.out',
         scrollTrigger: { trigger: item, start: 'top 88%', toggleActions: 'play none none none' },
+      });
+    });
+
+    // Featured designs blocks
+    gsap.utils.toArray('.featured-block').forEach((block) => {
+      gsap.from(block, {
+        y: 50,
+        opacity: 0,
+        duration: 0.9,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: block, start: 'top 85%', toggleActions: 'play none none none' },
       });
     });
 
@@ -848,6 +860,50 @@
 
     tick();
     setInterval(tick, 1000);
+  }
+
+  // ── 15.6 CONTACT MODAL ─────────────────────────────────
+  function initContactModal() {
+    const modal = document.getElementById('contactModal');
+    if (!modal) return;
+
+    const backdrop = modal.querySelector('.contact-modal-backdrop');
+    const closeBtn = modal.querySelector('.contact-modal-close');
+    const panel = modal.querySelector('.contact-modal-panel');
+    const triggers = document.querySelectorAll('[data-contact-open]');
+
+    function openModal(e) {
+      if (e) e.preventDefault();
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+
+      if (gsapReady() && !prefersReducedMotion && panel) {
+        gsap.fromTo(panel, { scale: 0.94, opacity: 0, y: 16 }, { scale: 1, opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' });
+        gsap.fromTo(modal.querySelectorAll('.contact-item'), { y: 14, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.06, duration: 0.3, delay: 0.05, ease: 'power2.out' });
+      }
+
+      if (closeBtn) window.setTimeout(() => closeBtn.focus(), 350);
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    triggers.forEach((trigger) => trigger.addEventListener('click', openModal));
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeModal();
+        const opener = document.querySelector('[data-contact-open]');
+        if (opener) opener.focus();
+      }
+    });
   }
 
   // ── 16. PERFORMANCE CLEANUP ──────────────────────────────
