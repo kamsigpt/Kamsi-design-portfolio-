@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORGE — Kamsi Okoro</title>
+    <meta name="description" content="FORGE — A visual campaign project by Kamsi Okoro combining graphic design and motion.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/work.css">
+    <link rel="stylesheet" href="css/project.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-outline" aria-hidden="true"><span class="cursor-text">VIEW PROJECT →</span></div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" role="status" aria-label="Loading">
+        <div class="loader-content">
+            <div class="loader-name" aria-hidden="true">
+                <span class="letter">K</span><span class="letter">A</span><span class="letter">M</span><span class="letter">S</span><span class="letter">I</span>
+                <span class="letter">&nbsp;</span>
+                <span class="letter">O</span><span class="letter">K</span><span class="letter">O</span><span class="letter">R</span><span class="letter">O</span>
+            </div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo" aria-label="Kamsi Okoro - Home">KAMSI OKORO</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="work.html" class="nav-link active" aria-current="page">WORK</a>
+            </div>
+            <a href="mailto:hello@kamsiokoro.com" class="nav-contact">CONTACT</a>
+            <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" role="dialog" aria-label="Mobile navigation">
+        <div class="mobile-menu-links">
+            <a href="index.html" class="mobile-menu-link">HOME</a>
+            <a href="work.html" class="mobile-menu-link">WORK</a>
+            <a href="mailto:hello@kamsiokoro.com" class="mobile-menu-link">CONTACT</a>
+        </div>
+        <div class="mobile-menu-footer">
+            <a href="mailto:hello@kamsiokoro.com">hello@kamsiokoro.com</a>
+        </div>
+    </div>
+
+    <!-- Project Header -->
+    <section class="project-detail-header" aria-label="Project: FORGE">
+        <a href="work.html" class="project-back">&larr; BACK TO WORK</a>
+        <h1 class="project-detail-title">FORGE</h1>
+        <div class="project-detail-meta">
+            <span class="project-detail-category">Graphic Design · Motion</span>
+            <span class="project-detail-year">2024</span>
+            <span class="project-detail-role">Art Direction, Design, Motion</span>
+        </div>
+        <div class="project-detail-visual">
+            <div class="image-placeholder" style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460); width: 100%; height: 100%; min-height: 500px;" aria-label="FORGE project hero visual"></div>
+        </div>
+    </section>
+
+    <!-- Project Content -->
+    <main class="project-detail-content">
+
+        <div class="project-detail-section">
+            <h2>THE CHALLENGE</h2>
+            <p>FORGE came from a conversation about what it means to build something that lasts. The brand needed a visual identity that felt solid and considered — something that communicated craftsmanship without leaning on clichés. The challenge was making "strength" feel modern and approachable, not heavy-handed. We needed a system that could work across print, digital and motion while keeping a consistent voice.</p>
+        </div>
+
+        <div class="project-detail-section">
+            <h2>THE CREATIVE DIRECTION</h2>
+            <p>The direction centred on controlled contrast — pairing sharp geometric forms with moments of breathing room. We built the palette around deep industrial tones offset by a single warm accent that gives the whole system a pulse. Typography was chosen for its clarity and presence at every scale. Every element was designed to feel intentional, like nothing was placed by accident.</p>
+        </div>
+
+        <div class="project-detail-section">
+            <h2>THE EXECUTION</h2>
+            <p>The identity rolled out across a suite of brand materials — business systems, social templates, environmental graphics and a motion toolkit. Each piece was built to stand on its own but feel like part of the same conversation when seen together. The motion work focused on transitions that mirror the brand's ethos: clean entries, precise movement and finishes that land with weight.</p>
+            <p>We also developed a set of animation principles for the brand — rules for timing, easing and layering that keep every motion piece feeling consistent regardless of who's animating or what the context is.</p>
+        </div>
+
+        <div class="project-detail-gallery">
+            <div class="gallery-item">
+                <div class="image-placeholder" style="background: linear-gradient(135deg, #1a1a2e, #0f3460); min-height: 350px;" aria-label="FORGE project detail 1"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="image-placeholder" style="background: linear-gradient(135deg, #16213e, #1a1a2e); min-height: 350px;" aria-label="FORGE project detail 2"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="image-placeholder" style="background: linear-gradient(135deg, #0f3460, #16213e); min-height: 350px;" aria-label="FORGE project detail 3"></div>
+            </div>
+            <div class="gallery-item">
+                <div class="image-placeholder" style="background: linear-gradient(135deg, #1a1a2e, #0f3460, #16213e); min-height: 350px;" aria-label="FORGE project detail 4"></div>
+            </div>
+        </div>
+
+        <div class="project-detail-section">
+            <h2>THE RESULT</h2>
+            <p>The final identity gave FORGE a visual presence that's unmistakable. It's a system that scales without losing its character — from a social post to a billboard, from a static page to a sixty-second reel. The client walked away with not just a logo but a complete visual language they could use, extend and grow with. More importantly, it feels like something that will still hold up two years from now.</p>
+        </div>
+
+    </main>
+
+    <!-- Next Project -->
+    <section class="next-project" aria-label="Next project">
+        <a href="project.html" class="next-project-link">
+            <span class="next-project-label">NEXT PROJECT</span>
+            <span class="next-project-title">DRIFT</span>
+            <span class="next-project-arrow">→</span>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-logo">KAMSI OKORO</div>
+            <div class="footer-role">Graphic Designer · Motion Designer · Video Editor</div>
+            <div class="footer-links">
+                <a href="index.html">HOME</a>
+                <a href="work.html">WORK</a>
+                <a href="mailto:hello@kamsiokoro.com">CONTACT</a>
+            </div>
+            <div class="footer-copyright">&copy; 2024 Kamsi Okoro. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

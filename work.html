@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work — Kamsi Okoro</title>
+    <meta name="description" content="Selected work by Kamsi Okoro — Graphic Design, Motion Design, Video Editing and Branding projects.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/work.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-outline" aria-hidden="true"><span class="cursor-text">VIEW PROJECT →</span></div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" role="status" aria-label="Loading">
+        <div class="loader-content">
+            <div class="loader-name" aria-hidden="true">
+                <span class="letter">K</span><span class="letter">A</span><span class="letter">M</span><span class="letter">S</span><span class="letter">I</span>
+                <span class="letter">&nbsp;</span>
+                <span class="letter">O</span><span class="letter">K</span><span class="letter">O</span><span class="letter">R</span><span class="letter">O</span>
+            </div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo" aria-label="Kamsi Okoro - Home">KAMSI OKORO</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="work.html" class="nav-link active" aria-current="page">WORK</a>
+            </div>
+            <a href="mailto:hello@kamsiokoro.com" class="nav-contact">CONTACT</a>
+            <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" role="dialog" aria-label="Mobile navigation">
+        <div class="mobile-menu-links">
+            <a href="index.html" class="mobile-menu-link">HOME</a>
+            <a href="work.html" class="mobile-menu-link">WORK</a>
+            <a href="mailto:hello@kamsiokoro.com" class="mobile-menu-link">CONTACT</a>
+        </div>
+        <div class="mobile-menu-footer">
+            <a href="mailto:hello@kamsiokoro.com">hello@kamsiokoro.com</a>
+        </div>
+    </div>
+
+    <!-- Work Header -->
+    <section class="work-header" aria-label="Work">
+        <div class="work-header-content">
+            <h1 class="work-title">WORK</h1>
+            <p class="work-subtitle">Selected visual work across graphic design, motion and video.</p>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <div class="filters" role="group" aria-label="Filter projects">
+        <button class="filter-btn active" data-filter="all" aria-pressed="true">ALL</button>
+        <button class="filter-btn" data-filter="graphic" aria-pressed="false">GRAPHIC</button>
+        <button class="filter-btn" data-filter="motion" aria-pressed="false">MOTION</button>
+        <button class="filter-btn" data-filter="video" aria-pressed="false">VIDEO</button>
+        <button class="filter-btn" data-filter="branding" aria-pressed="false">BRANDING</button>
+    </div>
+
+    <!-- Work Grid -->
+    <section class="work-grid" aria-label="Project gallery">
+
+        <article class="work-item size-large" data-category="graphic motion" role="link" tabindex="0" aria-label="View project: FORGE">
+            <div class="work-item-image">
+                <div class="image-placeholder" style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);" aria-hidden="true"></div>
+            </div>
+            <div class="work-item-overlay">
+                <span class="work-item-category">Graphic Design · Motion</span>
+                <h2 class="work-item-title">FORGE</h2>
+                <span class="work-item-year">2024</span>
+                <span class="work-item-arrow">VIEW PROJECT →</span>
+            </div>
+        </article>
+
+        <article class="work-item size-medium" data-category="branding graphic" role="link" tabindex="0" aria-label="View project: DRIFT">
+            <div class="work-item-image">
+                <div class="image-placeholder" style="background: linear-gradient(135deg, #2d1b69, #11998e);" aria-hidden="true"></div>
+            </div>
+            <div class="work-item-overlay">
+                <span class="work-item-category">Branding · Graphic Design</span>
+                <h2 class="work-item-title">DRIFT</h2>
+                <span class="work-item-year">2024</span>
+                <span class="work-item-arrow">VIEW PROJECT →</span>
+            </div>
+        </article>
+
+        <article class="work-item size-medium" data-category="motion" role="link" tabindex="0" aria-label="View project: PULSE">
+            <div class="work-item-image">
+                <div class="image-placeholder" style="background: linear-gradient(135deg, #fc466b, #3f5efb);" aria-hidden="true"></div>
+            </div>
+            <div class="work-item-overlay">
+                <span class="work-item-category">Motion Design</span>
+                <h2 class="work-item-title">PULSE</h2>
+                <span class="work-item-year">2023</span>
+                <span class="work-item-arrow">VIEW PROJECT →</span>
+            </div>
+        </article>
+
+        <article class="work-item size-full" data-category="graphic" role="link" tabindex="0" aria-label="View project: MERIDIAN">
+            <div class="work-item-image">
+                <div class="image-placeholder" style="background: linear-gradient(135deg, #0c0c0c, #1a1a2e, #e2e2e2);" aria-hidden="true"></div>
+            </div>
+            <div class="work-item-overlay">
+                <span class="work-item-category">Graphic Design · Art Direction</span>
+                <h2 class="work-item-title">MERIDIAN</h2>
+                <span class="work-item-year">2023</span>
+                <span class="work-item-arrow">VIEW PROJECT →</span>
+            </div>
+        </article>
+
+        <article class="work-item size-small" data-category="graphic" role="link" tabindex="0" aria-label="View project: SOLARIS">
+            <div class="work-item-image">
+                <div class="image-placeholder" style="background: linear-gradient(135deg, #f7971e, #ffd200);" aria-hidden="true"></div>
+            </div>
+            <div class="work-item-overlay">
+                <span class="work-item-category">Graphic Design</span>
+                <h2 class="work-item-title">SOLARIS</h2>
+                <span class="work-item-year">2023</span>
+                <span class="work-item-arrow">VIEW PROJECT →</span>
+            </div>
+        </article>
+
+        <article class="work-item size-large" data-category="branding graphic" role="link" tabindex="0" aria-label="View project: VANTAGE">
+            <div class="work-item-image">
+                <div class="image-placeholder" style="background: linear-gradient(135deg, #141e30, #243b55);" aria-hidden="true"></div>
+            </div>
+            <div class="work-item-overlay">
+                <span class="work-item-category">Branding · Graphic Design</span>
+                <h2 class="work-item-title">VANTAGE</h2>
+                <span class="work-item-year">2024</span>
+                <span class="work-item-arrow">VIEW PROJECT →</span>
+            </div>
+        </article>
+
+        <article class="work-item size-medium" data-category="motion video" role="link" tabindex="0" aria-label="View project: ECHO">
+            <div class="work-item-image">
+                <div class="image-placeholder" style="background: linear-gradient(135deg, #654ea3, #eaafc8);" aria-hidden="true"></div>
+            </div>
+            <div class="work-item-overlay">
+                <span class="work-item-category">Motion Design · Video</span>
+                <h2 class="work-item-title">ECHO</h2>
+                <span class="work-item-year">2023</span>
+                <span class="work-item-arrow">VIEW PROJECT →</span>
+            </div>
+        </article>
+
+        <article class="work-item size-small" data-category="branding" role="link" tabindex="0" aria-label="View project: NEXUS">
+            <div class="work-item-image">
+                <div class="image-placeholder" style="background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);" aria-hidden="true"></div>
+            </div>
+            <div class="work-item-overlay">
+                <span class="work-item-category">Branding · Art Direction</span>
+                <h2 class="work-item-title">NEXUS</h2>
+                <span class="work-item-year">2024</span>
+                <span class="work-item-arrow">VIEW PROJECT →</span>
+            </div>
+        </article>
+
+        <article class="work-item size-medium" data-category="video motion" role="link" tabindex="0" aria-label="View project: ORBIT">
+            <div class="work-item-image">
+                <div class="image-placeholder" style="background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);" aria-hidden="true"></div>
+            </div>
+            <div class="work-item-overlay">
+                <span class="work-item-category">Video · Motion Design</span>
+                <h2 class="work-item-title">ORBIT</h2>
+                <span class="work-item-year">2024</span>
+                <span class="work-item-arrow">VIEW PROJECT →</span>
+            </div>
+        </article>
+
+        <article class="work-item size-full" data-category="graphic branding" role="link" tabindex="0" aria-label="View project: ZENITH">
+            <div class="work-item-image">
+                <div class="image-placeholder" style="background: linear-gradient(135deg, #1f1c2c, #928dab);" aria-hidden="true"></div>
+            </div>
+            <div class="work-item-overlay">
+                <span class="work-item-category">Graphic Design · Branding</span>
+                <h2 class="work-item-title">ZENITH</h2>
+                <span class="work-item-year">2023</span>
+                <span class="work-item-arrow">VIEW PROJECT →</span>
+            </div>
+        </article>
+
+        <article class="work-item size-small" data-category="graphic" role="link" tabindex="0" aria-label="View project: VECTOR">
+            <div class="work-item-image">
+                <div class="image-placeholder" style="background: linear-gradient(135deg, #232526, #414345);" aria-hidden="true"></div>
+            </div>
+            <div class="work-item-overlay">
+                <span class="work-item-category">Graphic Design</span>
+                <h2 class="work-item-title">VECTOR</h2>
+                <span class="work-item-year">2023</span>
+                <span class="work-item-arrow">VIEW PROJECT →</span>
+            </div>
+        </article>
+
+        <article class="work-item size-large" data-category="motion graphic" role="link" tabindex="0" aria-label="View project: APEX">
+            <div class="work-item-image">
+                <div class="image-placeholder" style="background: linear-gradient(135deg, #000428, #004e92);" aria-hidden="true"></div>
+            </div>
+            <div class="work-item-overlay">
+                <span class="work-item-category">Motion Design · Graphic Design</span>
+                <h2 class="work-item-title">APEX</h2>
+                <span class="work-item-year">2024</span>
+                <span class="work-item-arrow">VIEW PROJECT →</span>
+            </div>
+        </article>
+
+    </section>
+
+    <!-- Project Detail Overlay -->
+    <div class="project-overlay" role="dialog" aria-label="Project details" aria-hidden="true">
+        <div class="project-overlay-inner">
+            <button class="project-close" aria-label="Close project details">&times;</button>
+            <div class="project-header">
+                <h2 class="overlay-title"></h2>
+                <span class="overlay-category"></span>
+                <span class="overlay-year"></span>
+                <span class="overlay-role"></span>
+            </div>
+            <div class="project-visual"></div>
+            <div class="project-body">
+                <div class="project-section">
+                    <h3>THE CHALLENGE</h3>
+                    <p class="overlay-challenge"></p>
+                </div>
+                <div class="project-section">
+                    <h3>THE CREATIVE DIRECTION</h3>
+                    <p class="overlay-direction"></p>
+                </div>
+                <div class="project-section">
+                    <h3>THE EXECUTION</h3>
+                    <p class="overlay-execution"></p>
+                </div>
+                <div class="project-section">
+                    <h3>THE RESULT</h3>
+                    <p class="overlay-result"></p>
+                </div>
+            </div>
+            <div class="project-nav">
+                <button class="project-prev" aria-label="Previous project">← PREV</button>
+                <button class="project-next" aria-label="Next project">NEXT →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-logo">KAMSI OKORO</div>
+            <div class="footer-role">Graphic Designer · Motion Designer · Video Editor</div>
+            <div class="footer-links">
+                <a href="index.html">HOME</a>
+                <a href="work.html">WORK</a>
+                <a href="mailto:hello@kamsiokoro.com">CONTACT</a>
+            </div>
+            <div class="footer-copyright">&copy; 2024 Kamsi Okoro. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
