@@ -1,5 +1,5 @@
 /* ============================================
-   DESIGN SYSTEM — Vibrant Sky / Ice Blue
+   DESIGN SYSTEM — Mint & Violet
    Foundation: colors, typography, spacing, utilities
    ============================================ */
 
@@ -8,22 +8,22 @@
 /* ---- Custom Properties ---- */
 :root {
   /* Color System */
-  --clr-primary: #2E6DA6;
+  --clr-primary: #5B2EFF;
   --clr-light: #FFFFFF;
-  --clr-medium: #7CC4F8;
-  --clr-dark: #16324F;
+  --clr-medium: #9B7BFF;
+  --clr-dark: #2A0E7A;
 
   --clr-bg-dark: #27F5C2;
   --clr-bg-medium: #27F5C2;
   --clr-bg-lighter: #27F5C2;
   --clr-surface: #27F5C2;
 
-  --clr-text-primary: #FFFFFF;
-  --clr-text-secondary: #FFFFFF;
-  --clr-text-muted: #FFFFFF;
+  --clr-text-primary: #5B2EFF;
+  --clr-text-secondary: #5B2EFF;
+  --clr-text-muted: #5B2EFF;
 
-  --clr-border: #4796D6;
-  --clr-border-light: #5AA5E0;
+  --clr-border: rgba(91, 46, 255, 0.25);
+  --clr-border-light: rgba(91, 46, 255, 0.45);
 
   /* Typography */
   --ff-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -177,12 +177,12 @@ button {
 }
 
 ::selection {
-  background-color: var(--clr-dark);
+  background-color: var(--clr-primary);
   color: #FFFFFF;
 }
 
 ::-moz-selection {
-  background-color: var(--clr-dark);
+  background-color: var(--clr-primary);
   color: #FFFFFF;
 }
 

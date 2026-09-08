@@ -144,11 +144,11 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-full);
-  background-color: rgba(11, 29, 51, 0.55);
+  background-color: rgba(91, 46, 255, 0.55);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: var(--clr-text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #FFFFFF;
   font-size: 1.5rem;
   transition: all var(--tr-base);
 }
