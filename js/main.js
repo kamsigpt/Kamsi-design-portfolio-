@@ -132,50 +132,41 @@
     const heroBtn = document.querySelector('.hero-btn');
     const scrollIndicator = document.querySelector('.hero-scroll');
 
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
     tl.from(nameWords, {
       yPercent: 110,
-      duration: 0.8,
-      stagger: 0.08,
+      duration: 1,
+      stagger: 0.1,
     });
 
-    tl.from('.hero-name .letter', {
-      scale: 0.5,
-      opacity: 0,
-      duration: 0.35,
-      stagger: 0.02,
-      ease: 'back.out(2.2)',
-    }, '-=0.5');
-
     tl.from(roleLines, {
-      y: 18,
+      y: 16,
       opacity: 0,
-      duration: 0.4,
+      duration: 0.6,
       stagger: 0.06,
-    }, '-=0.2');
+    }, '-=0.4');
 
     if (tagline) {
       tl.from(tagline, {
-        y: 18,
+        y: 16,
         opacity: 0,
-        duration: 0.5,
-      }, '-=0.2');
+        duration: 0.6,
+      }, '-=0.25');
     }
 
     if (heroBtn) {
       tl.from(heroBtn, {
-        y: 18,
+        y: 16,
         opacity: 0,
-        duration: 0.45,
+        duration: 0.5,
       }, '-=0.3');
     }
 
     if (scrollIndicator) {
       tl.from(scrollIndicator, {
         opacity: 0,
-        y: -10,
-        duration: 0.5,
+        duration: 0.6,
       }, '-=0.25');
     }
   }
