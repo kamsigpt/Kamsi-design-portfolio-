@@ -17,11 +17,11 @@
 }
 
 .nav.scrolled {
-  background-color: rgba(39, 245, 194, 0.88);
+  background-color: rgba(255, 249, 236, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: var(--sp-md) 0;
-  border-bottom: 1px solid rgba(42, 58, 78, 0.25);
+  border-bottom: 1px solid rgba(91, 46, 255, 0.2);
 }
 
 .nav-inner {
@@ -44,34 +44,19 @@
   font-weight: var(--fw-medium);
   letter-spacing: var(--ls-widest);
   text-transform: uppercase;
-  color: var(--clr-text-secondary);
-  position: relative;
-  padding: var(--sp-xs) 0;
-  transition: color var(--tr-fast);
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: var(--clr-primary);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform var(--tr-base);
-}
-
-.nav-link:hover,
-.nav-link.active {
   color: var(--clr-text-primary);
+  padding: var(--sp-xs) var(--sp-lg);
+  border-radius: var(--radius-full);
+  transition: background-color var(--tr-base), color var(--tr-fast);
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
-  transform: scaleX(1);
-  transform-origin: left;
+.nav-link:hover {
+  background-color: rgba(91, 46, 255, 0.12);
+}
+
+.nav-link.active {
+  background-color: var(--clr-text-primary);
+  color: var(--clr-bg-dark);
 }
 
 .nav-contact {
@@ -79,13 +64,16 @@
   font-weight: var(--fw-medium);
   letter-spacing: var(--ls-widest);
   text-transform: uppercase;
-  color: var(--clr-text-muted);
+  color: var(--clr-text-primary);
   margin-left: var(--sp-2xl);
-  transition: color var(--tr-fast);
+  padding: var(--sp-xs) var(--sp-lg);
+  border-radius: var(--radius-full);
+  transition: background-color var(--tr-base), color var(--tr-fast);
 }
 
 .nav-contact:hover {
-  color: var(--clr-text-primary);
+  background-color: var(--clr-text-primary);
+  color: var(--clr-bg-dark);
 }
 
 /* Hamburger */
@@ -281,7 +269,7 @@
   margin-top: var(--sp-2xl);
   padding: var(--sp-md) var(--sp-3xl);
   background-color: var(--clr-text-primary);
-  color: var(--clr-light);
+  color: var(--clr-bg-dark);
   font-size: var(--fs-sm);
   font-weight: var(--fw-medium);
   letter-spacing: var(--ls-widest);
@@ -556,8 +544,8 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(39, 245, 194, 0.92) 0%,
-    rgba(39, 245, 194, 0.4) 45%,
+    rgba(255, 249, 236, 0.92) 0%,
+    rgba(255, 249, 236, 0.4) 45%,
     transparent 100%
   );
   display: flex;

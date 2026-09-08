@@ -1,5 +1,5 @@
 /* ============================================
-   DESIGN SYSTEM — Mint & Violet
+   DESIGN SYSTEM — Cream & Violet
    Foundation: colors, typography, spacing, utilities
    ============================================ */
 
@@ -13,10 +13,10 @@
   --clr-medium: #9B7BFF;
   --clr-dark: #2A0E7A;
 
-  --clr-bg-dark: #27F5C2;
-  --clr-bg-medium: #27F5C2;
-  --clr-bg-lighter: #27F5C2;
-  --clr-surface: #27F5C2;
+  --clr-bg-dark: #FFF9EC;
+  --clr-bg-medium: #FFF9EC;
+  --clr-bg-lighter: #FFF9EC;
+  --clr-surface: #FFF9EC;
 
   --clr-text-primary: #5B2EFF;
   --clr-text-secondary: #5B2EFF;
