@@ -9,18 +9,18 @@
 :root {
   /* Color System */
   --clr-primary: #2E6DA6;
-  --clr-light: #BFE3FF;
+  --clr-light: #FFFFFF;
   --clr-medium: #7CC4F8;
   --clr-dark: #16324F;
 
-  --clr-bg-dark: #5FB3F5;
-  --clr-bg-medium: #79C3F7;
-  --clr-bg-lighter: #96D2FA;
-  --clr-surface: #B0DFFC;
+  --clr-bg-dark: #27F5C2;
+  --clr-bg-medium: #27F5C2;
+  --clr-bg-lighter: #27F5C2;
+  --clr-surface: #27F5C2;
 
-  --clr-text-primary: #0B1D33;
-  --clr-text-secondary: #1E3A57;
-  --clr-text-muted: #3D5C7D;
+  --clr-text-primary: #FFFFFF;
+  --clr-text-secondary: #FFFFFF;
+  --clr-text-muted: #FFFFFF;
 
   --clr-border: #4796D6;
   --clr-border-light: #5AA5E0;
@@ -177,13 +177,13 @@ button {
 }
 
 ::selection {
-  background-color: var(--clr-text-primary);
-  color: var(--clr-light);
+  background-color: var(--clr-dark);
+  color: #FFFFFF;
 }
 
 ::-moz-selection {
-  background-color: var(--clr-text-primary);
-  color: var(--clr-light);
+  background-color: var(--clr-dark);
+  color: #FFFFFF;
 }
 
 /* ---- Scrollbar ---- */
@@ -236,7 +236,7 @@ strong {
 .text-muted { color: var(--clr-text-muted); }
 .text-secondary { color: var(--clr-text-secondary); }
 .text-primary { color: var(--clr-text-primary); }
-.text-accent { color: var(--clr-primary); }
+.text-accent { color: var(--clr-text-primary); }
 
 .label {
   font-size: var(--fs-xs);
@@ -251,7 +251,7 @@ strong {
   font-weight: var(--fw-semibold);
   letter-spacing: var(--ls-widest);
   text-transform: uppercase;
-  color: var(--clr-primary);
+  color: var(--clr-text-primary);
 }
 
 /* ---- Layout ---- */

@@ -49,7 +49,7 @@
   position: sticky;
   top: 60px;
   z-index: calc(var(--z-nav) - 1);
-  background-color: rgba(95, 179, 245, 0.9);
+  background-color: rgba(39, 245, 194, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   max-width: var(--max-width);
@@ -208,7 +208,7 @@
   font-weight: var(--fw-semibold);
   letter-spacing: var(--ls-widest);
   text-transform: uppercase;
-  color: var(--clr-primary);
+  color: var(--clr-text-primary);
   margin-bottom: var(--sp-lg);
 }
 

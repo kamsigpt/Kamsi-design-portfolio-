@@ -16,13 +16,13 @@
   font-weight: var(--fw-medium);
   letter-spacing: var(--ls-widest);
   text-transform: uppercase;
-  color: var(--clr-text-muted);
+  color: var(--clr-text-primary);
   margin-bottom: var(--sp-2xl);
   transition: color var(--tr-fast);
 }
 
 .project-back:hover {
-  color: var(--clr-primary);
+  color: var(--clr-text-primary);
 }
 
 .project-detail-title {
@@ -47,12 +47,12 @@
 }
 
 .project-detail-meta .project-detail-category {
-  color: var(--clr-primary);
+  color: var(--clr-text-primary);
   font-weight: var(--fw-medium);
 }
 
 .project-detail-meta .project-detail-role {
-  color: var(--clr-text-muted);
+  color: var(--clr-text-primary);
 }
 
 .project-detail-visual {
@@ -79,7 +79,7 @@
   font-weight: var(--fw-semibold);
   letter-spacing: var(--ls-widest);
   text-transform: uppercase;
-  color: var(--clr-primary);
+  color: var(--clr-text-primary);
   margin-bottom: var(--sp-lg);
 }
 
@@ -130,7 +130,7 @@
   font-weight: var(--fw-medium);
   letter-spacing: var(--ls-widest);
   text-transform: uppercase;
-  color: var(--clr-text-muted);
+  color: var(--clr-text-primary);
 }
 
 .next-project-title {
@@ -141,12 +141,12 @@
 }
 
 .next-project-link:hover .next-project-title {
-  color: var(--clr-primary);
+  color: var(--clr-text-primary);
 }
 
 .next-project-arrow {
   font-size: var(--fs-2xl);
-  color: var(--clr-primary);
+  color: var(--clr-text-primary);
   transition: transform var(--tr-base);
 }
 

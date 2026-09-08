@@ -21,22 +21,28 @@
       gsap.registerPlugin(ScrollTrigger);
     }
 
-    initLoadingScreen();
     initNavigation();
     initPageTransitions();
     initAccessibility();
 
     if (prefersReducedMotion) {
       revealAllImmediately();
+    } else {
+      initHeroAnimations();
+      initScrollAnimations();
+      initParallax();
+      initDisciplineHovers();
+      initWorkFiltering();
+      initProjectOverlay();
+      initMagneticButtons();
+      initTextScramble();
+      initSmoothScrollIndicator(false);
     }
   });
 
-  // ── Show everything instantly for reduced-motion users ───
+  // ── Show everything for reduced-motion users ─────────────
   function revealAllImmediately() {
-    const loader = document.querySelector('.loading-screen');
-    if (loader) loader.classList.add('loaded');
-
-    document.querySelectorAll('.name-word, .role-line, .hero-tagline, .hero-scroll, .hero-orb').forEach((el) => {
+    document.querySelectorAll('.name-word, .role-line, .hero-tagline, .hero-scroll').forEach((el) => {
       el.style.opacity = '1';
       el.style.transform = 'none';
     });
@@ -53,55 +59,6 @@
     initMagneticButtons();
     initTextScramble();
     initSmoothScrollIndicator(true);
-  }
-
-  // ── 2. LOADING SCREEN ────────────────────────────────────
-  function initLoadingScreen() {
-    const loader = document.querySelector('.loading-screen');
-    if (!loader) return;
-
-    // No GSAP available — reveal everything immediately.
-    if (!gsapReady()) {
-      loader.classList.add('loaded');
-      revealAllImmediately();
-      return;
-    }
-
-    if (prefersReducedMotion) return;
-
-    const letters = loader.querySelectorAll('.letter');
-    const progress = loader.querySelector('.loader-progress');
-
-    const tl = gsap.timeline({
-      onComplete: () => {
-        loader.classList.add('loaded');
-        setTimeout(() => {
-          initHeroAnimations();
-          initScrollAnimations();
-          initParallax();
-          initDisciplineHovers();
-          initWorkFiltering();
-          initProjectOverlay();
-          initMagneticButtons();
-          initTextScramble();
-          initSmoothScrollIndicator(false);
-        }, 100);
-      },
-    });
-
-    tl.from(letters, {
-      scale: 0,
-      opacity: 0,
-      duration: 0.4,
-      stagger: 0.05,
-      ease: 'back.out(1.7)',
-    });
-
-    tl.to(progress, {
-      width: '100%',
-      duration: 1.5,
-      ease: 'power2.inOut',
-    }, '-=0.2');
   }
 
   // ── 4. NAVIGATION ────────────────────────────────────────
@@ -174,7 +131,6 @@
     const roleLines = document.querySelectorAll('.role-line');
     const tagline = document.querySelector('.hero-tagline');
     const scrollIndicator = document.querySelector('.hero-scroll');
-    const orbs = document.querySelectorAll('.hero-orb');
 
     const tl = gsap.timeline();
 
@@ -211,16 +167,6 @@
         ease: 'power3.out',
       }, '-=0.2');
     }
-
-    orbs.forEach((orb) => {
-      gsap.to(orb, {
-        y: 'random(-25, 25)',
-        duration: 'random(3, 5)',
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-      });
-    });
   }
 
   // ── 6. SCROLL ANIMATIONS (ScrollTrigger) ─────────────────
@@ -569,9 +515,7 @@
     if (!overlay) {
       workItems.forEach((item) => {
         item.addEventListener('click', () => {
-          document.body.style.opacity = '0';
-          document.body.style.transition = 'opacity 0.3s ease';
-          setTimeout(() => { window.location.href = 'work.html'; }, 250);
+          window.location.href = 'work.html';
         });
       });
       return;
@@ -813,41 +757,20 @@
 
   // ── 15. PAGE TRANSITIONS ─────────────────────────────────
   function initPageTransitions() {
-    if (!gsapReady()) return;
-
     // Fade in on load
-    gsap.from(document.body, {
-      opacity: 0,
-      duration: 0.4,
-      ease: 'power2.out',
-    });
-
-    // Fade out on internal link click
-    document.querySelectorAll('a[href]').forEach((link) => {
-      const href = link.getAttribute('href');
-
-      // Skip external links, mailto, tel, and anchors
-      if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('#')) return;
-
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        gsap.to(document.body, {
-          opacity: 0,
-          duration: 0.3,
-          ease: 'power2.in',
-          onComplete: () => {
-            window.location.href = href;
-          },
-        });
+    if (gsapReady()) {
+      gsap.from(document.body, {
+        opacity: 0,
+        duration: 0.4,
+        ease: 'power2.out',
       });
-    });
+    }
   }
 
   // ── 17. ACCESSIBILITY ────────────────────────────────────
   function initAccessibility() {
     // Mark decorative elements as aria-hidden (reinforce HTML attributes via JS)
-    document.querySelectorAll('.hero-orb, .hero-visual, .scroll-line').forEach((el) => {
+    document.querySelectorAll('.hero-visual, .scroll-line').forEach((el) => {
       el.setAttribute('aria-hidden', 'true');
     });
 
