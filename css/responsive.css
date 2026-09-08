@@ -35,6 +35,12 @@
     display: none;
   }
 
+  .nav-inner {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+
   .hamburger {
     display: flex;
   }

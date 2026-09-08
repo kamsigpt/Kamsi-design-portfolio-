@@ -22,7 +22,6 @@
     }
 
     initNavigation();
-    initPageTransitions();
     initAccessibility();
 
     if (prefersReducedMotion) {
@@ -137,47 +136,47 @@
 
     tl.from(nameWords, {
       yPercent: 110,
-      duration: 1.1,
-      stagger: 0.12,
+      duration: 0.8,
+      stagger: 0.08,
     });
 
     tl.from('.hero-name .letter', {
-      scale: 0.4,
+      scale: 0.5,
       opacity: 0,
-      duration: 0.5,
-      stagger: 0.03,
-      ease: 'back.out(2.5)',
-    }, '-=0.7');
+      duration: 0.35,
+      stagger: 0.02,
+      ease: 'back.out(2.2)',
+    }, '-=0.5');
 
     tl.from(roleLines, {
-      y: 24,
+      y: 18,
       opacity: 0,
-      duration: 0.5,
-      stagger: 0.08,
-    }, '-=0.3');
+      duration: 0.4,
+      stagger: 0.06,
+    }, '-=0.2');
 
     if (tagline) {
       tl.from(tagline, {
-        y: 24,
+        y: 18,
         opacity: 0,
-        duration: 0.7,
-      }, '-=0.25');
+        duration: 0.5,
+      }, '-=0.2');
     }
 
     if (heroBtn) {
       tl.from(heroBtn, {
-        y: 24,
+        y: 18,
         opacity: 0,
-        duration: 0.6,
-      }, '-=0.4');
+        duration: 0.45,
+      }, '-=0.3');
     }
 
     if (scrollIndicator) {
       tl.from(scrollIndicator, {
         opacity: 0,
         y: -10,
-        duration: 0.6,
-      }, '-=0.3');
+        duration: 0.5,
+      }, '-=0.25');
     }
   }
 
@@ -670,7 +669,7 @@
   function initMagneticButtons() {
     if (isTouchDevice || prefersReducedMotion || !gsapReady()) return;
 
-    const magneticElements = document.querySelectorAll('.cta-link, .nav-links a, .filter-btn');
+    const magneticElements = document.querySelectorAll('.cta-link, .filter-btn');
 
     magneticElements.forEach((el) => {
       el.addEventListener('mousemove', (e) => {
@@ -767,19 +766,7 @@
     }
   }
 
-  // ── 15. PAGE TRANSITIONS ─────────────────────────────────
-  function initPageTransitions() {
-    // Fade in on load
-    if (gsapReady()) {
-      gsap.from(document.body, {
-        opacity: 0,
-        duration: 0.4,
-        ease: 'power2.out',
-      });
-    }
-  }
-
-  // ── 17. ACCESSIBILITY ────────────────────────────────────
+  // ── 15. ACCESSIBILITY ────────────────────────────────────
   function initAccessibility() {
     // Mark decorative elements as aria-hidden (reinforce HTML attributes via JS)
     document.querySelectorAll('.hero-visual, .scroll-line').forEach((el) => {
