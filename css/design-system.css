@@ -1,5 +1,5 @@
 /* ============================================
-   DESIGN SYSTEM — Stormy Morning Palette
+   DESIGN SYSTEM — Vibrant Sky / Ice Blue
    Foundation: colors, typography, spacing, utilities
    ============================================ */
 
@@ -8,22 +8,22 @@
 /* ---- Custom Properties ---- */
 :root {
   /* Color System */
-  --clr-primary: #6A89A7;
-  --clr-light: #BDDDFC;
-  --clr-medium: #88BDF2;
-  --clr-dark: #384959;
+  --clr-primary: #2E6DA6;
+  --clr-light: #BFE3FF;
+  --clr-medium: #7CC4F8;
+  --clr-dark: #16324F;
 
-  --clr-bg-dark: #0F1419;
-  --clr-bg-medium: #1A2332;
-  --clr-bg-lighter: #243040;
-  --clr-surface: #2A3A4E;
+  --clr-bg-dark: #5FB3F5;
+  --clr-bg-medium: #79C3F7;
+  --clr-bg-lighter: #96D2FA;
+  --clr-surface: #B0DFFC;
 
-  --clr-text-primary: #E8EDF2;
-  --clr-text-secondary: #8CA4BB;
-  --clr-text-muted: #5A7A96;
+  --clr-text-primary: #0B1D33;
+  --clr-text-secondary: #1E3A57;
+  --clr-text-muted: #3D5C7D;
 
-  --clr-border: #2A3A4E;
-  --clr-border-light: #384959;
+  --clr-border: #4796D6;
+  --clr-border-light: #5AA5E0;
 
   /* Typography */
   --ff-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -177,13 +177,13 @@ button {
 }
 
 ::selection {
-  background-color: var(--clr-primary);
-  color: var(--clr-bg-dark);
+  background-color: var(--clr-text-primary);
+  color: var(--clr-light);
 }
 
 ::-moz-selection {
-  background-color: var(--clr-primary);
-  color: var(--clr-bg-dark);
+  background-color: var(--clr-text-primary);
+  color: var(--clr-light);
 }
 
 /* ---- Scrollbar ---- */

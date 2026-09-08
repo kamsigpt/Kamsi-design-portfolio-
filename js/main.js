@@ -23,7 +23,6 @@
 
     initLoadingScreen();
     initNavigation();
-    if (!isTouchDevice) initCustomCursor();
     initPageTransitions();
     initAccessibility();
 
@@ -103,70 +102,6 @@
       duration: 1.5,
       ease: 'power2.inOut',
     }, '-=0.2');
-  }
-
-  // ── 3. CUSTOM CURSOR ─────────────────────────────────────
-  function initCustomCursor() {
-    const dot = document.querySelector('.cursor-dot');
-    const outline = document.querySelector('.cursor-outline');
-    const cursorText = document.querySelector('.cursor-text');
-    if (!dot || !outline) return;
-
-    document.body.classList.add('has-custom-cursor');
-
-    let mouseX = 0, mouseY = 0;
-    let outlineX = 0, outlineY = 0;
-
-    const lerp = (a, b, t) => a + (b - a) * t;
-
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-    });
-
-    function animateCursor() {
-      outlineX = lerp(outlineX, mouseX, 0.15);
-      outlineY = lerp(outlineY, mouseY, 0.15);
-      outline.style.transform = `translate(${outlineX}px, ${outlineY}px)`;
-      requestAnimationFrame(animateCursor);
-    }
-    animateCursor();
-
-    const workItems = document.querySelectorAll('.work-item');
-    workItems.forEach((item) => {
-      item.addEventListener('mouseenter', () => {
-        outline.classList.add('cursor-expand');
-        if (cursorText) {
-          cursorText.textContent = 'VIEW PROJECT →';
-          cursorText.style.opacity = '1';
-        }
-      });
-      item.addEventListener('mouseleave', () => {
-        outline.classList.remove('cursor-expand');
-        if (cursorText) cursorText.style.opacity = '0';
-      });
-    });
-
-    document.querySelectorAll('a, button').forEach((el) => {
-      el.addEventListener('mouseenter', () => outline.classList.add('cursor-hover'));
-      el.addEventListener('mouseleave', () => outline.classList.remove('cursor-hover'));
-    });
-
-    const overlay = document.querySelector('.project-overlay');
-    if (overlay) {
-      overlay.addEventListener('mouseenter', () => {
-        outline.classList.add('cursor-close');
-        if (cursorText) {
-          cursorText.textContent = 'CLOSE ✕';
-          cursorText.style.opacity = '1';
-        }
-      });
-      overlay.addEventListener('mouseleave', () => {
-        outline.classList.remove('cursor-close');
-        if (cursorText) cursorText.style.opacity = '0';
-      });
-    }
   }
 
   // ── 4. NAVIGATION ────────────────────────────────────────
@@ -912,7 +847,7 @@
   // ── 17. ACCESSIBILITY ────────────────────────────────────
   function initAccessibility() {
     // Mark decorative elements as aria-hidden (reinforce HTML attributes via JS)
-    document.querySelectorAll('.hero-orb, .hero-visual, .cursor-dot, .cursor-outline, .scroll-line').forEach((el) => {
+    document.querySelectorAll('.hero-orb, .hero-visual, .scroll-line').forEach((el) => {
       el.setAttribute('aria-hidden', 'true');
     });
 

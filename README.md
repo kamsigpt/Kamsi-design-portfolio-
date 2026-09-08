@@ -4,7 +4,7 @@ A premium, cinematic design portfolio for **Kamsi Okoro** — Graphic Designer, 
 
 ## Overview
 
-This is a hand-crafted, art-directed portfolio website built with vanilla HTML, CSS and JavaScript (GSAP for animation). It positions Kamsi as a serious independent creative designer, with a high-end editorial/cinematic visual language built on the Figma **"Stormy Morning"** monochromatic blue-gray palette.
+This is a hand-crafted, art-directed portfolio website built with vanilla HTML, CSS and JavaScript (GSAP for animation). It positions Kamsi as a serious independent creative designer, with a vibrant **sky / ice blue** visual language (deep-navy-on-blue) that grabs attention while staying premium and cinematic.
 
 ## Pages
 
