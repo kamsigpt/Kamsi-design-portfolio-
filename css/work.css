@@ -90,7 +90,7 @@
 .atlas-filters {
   display: flex;
   align-items: center;
-  gap: var(--sp-sm);
+  gap: var(--sp-lg);
   padding: var(--sp-sm) 0;
   overflow-x: auto;
   scrollbar-width: none;
@@ -101,21 +101,17 @@
   display: none;
 }
 
+/* Text-only filters: no pill, no fill — the underline is the only marker. */
 .atlas-filter {
   font-size: var(--fs-xs);
   font-weight: var(--fw-medium);
   letter-spacing: var(--ls-widest);
   text-transform: uppercase;
   color: var(--clr-text-muted);
-  padding: var(--sp-xs) var(--sp-md);
-  border: 1px solid transparent;
-  border-radius: var(--radius-full);
+  padding: var(--sp-xs) 0;
   white-space: nowrap;
   position: relative;
-  transition:
-    color 300ms cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: color 300ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .atlas-filter::after {
@@ -131,14 +127,11 @@
 }
 
 .atlas-filter:hover {
-  background-color: var(--clr-bg-medium);
-  border-color: var(--clr-border-light);
   color: var(--clr-text-primary);
 }
 
 .atlas-filter.is-active {
   color: var(--clr-text-primary);
-  border-color: var(--clr-text-primary);
 }
 
 .atlas-filter.is-active::after {

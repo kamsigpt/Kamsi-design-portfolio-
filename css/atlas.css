@@ -214,17 +214,23 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 0.5rem;
-  font-weight: var(--fw-semibold);
-  letter-spacing: var(--ls-widest);
-  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
   color: var(--clr-text-primary);
-  padding: 5px 8px;
   background-color: rgba(255, 249, 236, 0.82);
   border-radius: var(--radius-full);
-  opacity: 0.5;
+  opacity: 0.55;
   transition: opacity 340ms var(--tr-base);
   pointer-events: none;
+}
+
+.atlas-badge svg {
+  display: block;
+  width: 11px;
+  height: 11px;
 }
 
 .atlas-tile:hover .atlas-badge,
@@ -233,7 +239,7 @@
 }
 
 .atlas-tile.is-playing .atlas-badge {
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 /* ---- Short pieces keep a single-line caption ---- */

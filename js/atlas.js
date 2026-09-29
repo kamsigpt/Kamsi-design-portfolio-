@@ -13,6 +13,13 @@
   var HOVERABLE = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var HAS_GSAP = typeof window.gsap !== 'undefined';
 
+  // Corner-outward arrows: signals "click to open fullscreen".
+  var EXPAND_ICON =
+    '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" ' +
+    'stroke-linecap="round" stroke-linejoin="round" focusable="false">' +
+    '<path d="M6 1.5H1.5V6"/><path d="M10 1.5h4.5V6"/>' +
+    '<path d="M14.5 10v4.5H10"/><path d="M1.5 10v4.5H6"/></svg>';
+
   var IMG_DIR = 'assets/images/';
   var VID_DIR = 'assets/videos/web/';
   var POST_DIR = 'assets/posters/';
@@ -42,8 +49,8 @@
     { id: 'ko-hoodie', kind: 'image', w: 800, h: 800, file: 'KO  clothing color hoodie design.jpg',
       name: 'K.O', cat: 'Colourway · Apparel Design', tags: ['graphic', 'product'] },
 
-    { id: 'forgr', kind: 'image', w: 2560, h: 564, file: 'Forgr flow logo.jpg',
-      name: 'FORGR FLOW', cat: 'Brand Identity · Wordmark', tags: ['branding'] },
+    { id: 'forge', kind: 'image', w: 639, h: 141, file: 'forge flow logo.PNG',
+      name: 'FORGE FLOW', cat: 'Brand Identity · Wordmark', tags: ['branding'] },
 
     { id: 'curio-video', kind: 'video', w: 1920, h: 1080, file: 'curio.mp4', poster: 'curio.jpg',
       name: 'CURIO', cat: 'Motion Design · Product Film', tags: ['motion', 'video', 'branding'] },
@@ -95,7 +102,7 @@
     d: [
       [{ w: 4, i: ['hyle-motion'] }, { w: 2, i: ['hyle-logo', 'hyle-merch'] }],
       [{ w: 3, i: ['ko-showcase'] }, { w: 3, i: ['ko-shirt'] }],
-      [{ w: 6, i: ['forgr'] }],
+      [{ w: 6, i: ['forge'] }],
       [{ w: 3, i: ['curio-video'] }, { w: 3, i: ['curio-logo'] }],
       [{ w: 2, i: ['hair-care'] }, { w: 2, i: ['restaurant'] }, { w: 2, i: ['vendtill'] }],
       [{ w: 4, i: ['itel'] }, { w: 2, i: ['bca'] }],
@@ -107,7 +114,7 @@
       [{ w: 4, i: ['hyle-motion'] }],
       [{ w: 2, i: ['hyle-logo'] }, { w: 2, i: ['hyle-merch'] }],
       [{ w: 2, i: ['ko-showcase'] }, { w: 2, i: ['ko-shirt'] }],
-      [{ w: 4, i: ['forgr'] }],
+      [{ w: 4, i: ['forge'] }],
       [{ w: 2, i: ['curio-video'] }, { w: 2, i: ['curio-logo'] }],
       [{ w: 2, i: ['hair-care'] }, { w: 2, i: ['restaurant'] }],
       [{ w: 2, i: ['vendtill'] }, { w: 2, i: ['bca'] }],
@@ -122,7 +129,7 @@
       [{ w: 1, i: ['hyle-logo'] }, { w: 1, i: ['hyle-merch'] }],
       [{ w: 2, i: ['ko-showcase'] }],
       [{ w: 1, i: ['ko-shirt'] }, { w: 1, i: ['ko-hoodie'] }],
-      [{ w: 2, i: ['forgr'] }],
+      [{ w: 2, i: ['forge'] }],
       [{ w: 2, i: ['curio-video'] }],
       [{ w: 1, i: ['curio-logo'] }, { w: 1, i: ['hair-care'] }],
       [{ w: 1, i: ['restaurant'] }, { w: 1, i: ['vendtill'] }],
@@ -216,7 +223,7 @@
     var badge = document.createElement('span');
     badge.className = 'atlas-badge';
     badge.setAttribute('aria-hidden', 'true');
-    badge.textContent = 'PLAY';
+    badge.innerHTML = EXPAND_ICON;
 
     var open = document.createElement('span');
     open.className = 'atlas-open';
