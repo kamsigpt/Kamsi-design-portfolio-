@@ -309,27 +309,6 @@
   }
 }
 
-/* ---- Media wall footer note ---- */
-.atlas-note {
-  max-width: var(--max-width);
-  margin: var(--sp-2xl) auto 0;
-  padding-inline: var(--gutter);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--sp-md);
-  border-top: 1px solid var(--clr-border);
-  padding-top: var(--sp-md);
-}
-
-.atlas-note p {
-  font-size: var(--fs-xs);
-  letter-spacing: var(--ls-wide);
-  text-transform: uppercase;
-  color: var(--clr-text-muted);
-}
-
 /* ============================================
    VIEWER — fullscreen media viewer
    ============================================ */

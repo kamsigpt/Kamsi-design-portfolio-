@@ -379,12 +379,6 @@
     root.style.height = Math.round(result.height) + 'px';
     root.setAttribute('data-count', visibleList().length);
 
-    var counter = document.querySelector('[data-atlas-count]');
-    if (counter) {
-      var n = visibleList().length;
-      counter.textContent = n + (n === 1 ? ' PIECE' : ' PIECES');
-    }
-
     root.classList.add('is-ready');
   }
 

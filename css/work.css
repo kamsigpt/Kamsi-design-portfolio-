@@ -1,11 +1,31 @@
 /* ============================================
-   WORK PAGE — Header, filter toolbar, wall frame
+   GALLERY PAGE — Header, filter toolbar, wall frame
    ============================================ */
 
-/* ---- Work Header ---- */
+/* ---- Gallery nav: stationary, no pill outline ----
+   Scoped to .page-gallery so the home hero, which relies on the
+   nav overlaying it, keeps the fixed treatment. */
+.page-gallery .nav {
+  position: static;
+  padding: var(--sp-md) 0;
+}
+
+.page-gallery .nav.scrolled {
+  padding: var(--sp-md) 0;
+}
+
+.page-gallery .nav-inner {
+  background-color: transparent;
+  border: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  padding-inline: var(--gutter);
+}
+
+/* ---- Gallery Header ---- */
 .work-header {
-  padding-top: calc(var(--sp-5xl) + 60px);
-  padding-bottom: var(--sp-2xl);
+  padding-top: var(--sp-xl);
+  padding-bottom: var(--sp-xl);
   position: relative;
 }
 
@@ -26,12 +46,14 @@
 }
 
 .work-title {
-  font-size: var(--fs-hero);
+  /* Capped below --fs-hero because "DESIGN GALLERY" is far longer
+     than the four-letter heading this size was tuned for. */
+  font-size: clamp(2rem, 1rem + 5.5vw, 6.5rem);
   font-weight: var(--fw-black);
   line-height: 0.95;
   letter-spacing: var(--ls-tighter);
   color: var(--clr-text-primary);
-  margin-bottom: var(--sp-lg);
+  margin-bottom: var(--sp-md);
 }
 
 .work-subtitle {
@@ -42,10 +64,11 @@
   line-height: var(--lh-relaxed);
 }
 
-/* ---- Toolbar: filters + live count ---- */
+/* ---- Toolbar: filters ----
+   The nav is stationary here, so the toolbar sticks to the very top. */
 .atlas-toolbar {
   position: sticky;
-  top: 60px;
+  top: 0;
   z-index: calc(var(--z-nav) - 1);
   background-color: rgba(255, 249, 236, 0.92);
   backdrop-filter: blur(16px);
@@ -60,7 +83,7 @@
   padding: 0 var(--gutter);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: var(--sp-lg);
 }
 
@@ -122,40 +145,18 @@
   transform: translateX(-50%) scaleX(1);
 }
 
-.atlas-count {
-  flex: 0 0 auto;
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-medium);
-  letter-spacing: var(--ls-widest);
-  text-transform: uppercase;
-  color: var(--clr-text-muted);
-  font-variant-numeric: tabular-nums;
-  padding-left: var(--sp-lg);
-  border-left: 1px solid var(--clr-border);
-}
-
 /* ---- Wall frame ---- */
 .atlas-section {
-  padding: var(--sp-2xl) 0 var(--sp-section);
-}
-
-@media (max-width: 991px) {
-  .atlas-toolbar {
-    top: 56px;
-  }
+  padding: var(--sp-xl) 0 var(--sp-section);
 }
 
 @media (max-width: 767px) {
   .work-header {
-    padding-top: calc(var(--sp-4xl) + 40px);
-    padding-bottom: var(--sp-xl);
+    padding-top: var(--sp-lg);
+    padding-bottom: var(--sp-lg);
   }
 
   .work-title {
-    font-size: clamp(3rem, 1.5rem + 5vw, 6rem);
-  }
-
-  .atlas-count {
-    display: none;
+    font-size: clamp(1.75rem, 1rem + 5vw, 3rem);
   }
 }
