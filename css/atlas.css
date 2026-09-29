@@ -1,0 +1,521 @@
+/* ============================================
+   ATLAS — Art-directed media collage
+   The media is the layout: every piece keeps its
+   own aspect ratio, orientation and visual weight.
+   ============================================ */
+
+/* ---- Collage canvas ---- */
+.atlas {
+  position: relative;
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  isolation: isolate;
+}
+
+.atlas-canvas {
+  position: relative;
+  width: 100%;
+}
+
+/* ---- Piece ---- */
+.atlas-tile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  opacity: 1;
+  transition:
+    transform 620ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.atlas-tile.is-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.atlas-canvas.is-reflowing .atlas-tile {
+  transition: none;
+}
+
+.atlas-frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 780ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 780ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.atlas-tile.is-in .atlas-frame {
+  opacity: 1;
+  transform: none;
+}
+
+.atlas-media {
+  position: absolute;
+  inset: 0;
+  display: block;
+  transform: scale(1);
+  transition: transform 460ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.atlas-image,
+.atlas-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* ---- Hover: lift forward, neighbours recede ---- */
+@media (hover: hover) and (pointer: fine) {
+  .atlas-tile:hover {
+    z-index: 5;
+  }
+
+  .atlas-tile:hover .atlas-media {
+    transform: scale(1.022);
+  }
+
+  .atlas-canvas.is-hovering .atlas-tile:not(:hover) {
+    opacity: 0.42;
+  }
+
+  .atlas-tile:focus-visible {
+    z-index: 6;
+  }
+
+  .atlas-tile:focus-visible .atlas-media {
+    transform: scale(1.022);
+  }
+}
+
+.atlas-tile:focus {
+  outline: none;
+}
+
+.atlas-tile:focus-visible .atlas-frame {
+  outline: 2px solid var(--clr-primary);
+  outline-offset: 3px;
+}
+
+/* ---- Scrim + caption: information stays out of the way ---- */
+.atlas-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(255, 249, 236, 0.94) 0%,
+    rgba(255, 249, 236, 0.72) 26%,
+    rgba(255, 249, 236, 0) 62%
+  );
+  opacity: 0;
+  transition: opacity 420ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.atlas-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 14px 12px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 460ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.atlas-cat {
+  font-size: 0.5625rem;
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+}
+
+.atlas-name {
+  font-size: 0.8125rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: var(--clr-text-primary);
+}
+
+.atlas-open {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.5625rem;
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--clr-text-primary);
+  padding: 5px 9px;
+  background-color: rgba(255, 249, 236, 0.9);
+  border: 1px solid var(--clr-border-light);
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 340ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .atlas-tile:hover .atlas-scrim,
+  .atlas-tile:focus-visible .atlas-scrim,
+  .atlas-tile:hover .atlas-caption,
+  .atlas-tile:focus-visible .atlas-caption,
+  .atlas-tile:hover .atlas-open,
+  .atlas-tile:focus-visible .atlas-open {
+    opacity: 1;
+  }
+
+  .atlas-tile:hover .atlas-caption,
+  .atlas-tile:focus-visible .atlas-caption {
+    transform: none;
+  }
+
+  .atlas-tile:hover .atlas-open,
+  .atlas-tile:focus-visible .atlas-open {
+    transform: none;
+  }
+}
+
+/* ---- Video marker ---- */
+.atlas-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.5rem;
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: var(--clr-text-primary);
+  padding: 5px 8px;
+  background-color: rgba(255, 249, 236, 0.82);
+  border-radius: var(--radius-full);
+  opacity: 0.5;
+  transition: opacity 340ms var(--tr-base);
+  pointer-events: none;
+}
+
+.atlas-tile:hover .atlas-badge,
+.atlas-tile:focus-visible .atlas-badge {
+  opacity: 0;
+}
+
+.atlas-tile.is-playing .atlas-badge {
+  opacity: 0.5;
+}
+
+/* ---- Short pieces keep a single-line caption ---- */
+.atlas-tile.is-slim .atlas-caption {
+  padding: 8px 10px 7px;
+}
+
+.atlas-tile.is-slim .atlas-cat {
+  display: none;
+}
+
+.atlas-tile.is-slim .atlas-name {
+  font-size: 0.6875rem;
+  letter-spacing: var(--ls-wider);
+}
+
+.atlas-tile.is-slim .atlas-scrim {
+  background: linear-gradient(
+    to top,
+    rgba(255, 249, 236, 0.92) 0%,
+    rgba(255, 249, 236, 0.6) 45%,
+    rgba(255, 249, 236, 0) 100%
+  );
+}
+
+.atlas-tile.is-slim .atlas-open,
+.atlas-tile.is-slim .atlas-badge {
+  top: 6px;
+}
+
+.atlas-tile.is-slim .atlas-open {
+  right: 6px;
+}
+
+.atlas-tile.is-slim .atlas-badge {
+  left: 6px;
+}
+
+/* ---- Touch: no hover, so labels stay legible ---- */
+@media (hover: none) {
+  .atlas-caption,
+  .atlas-scrim {
+    opacity: 1;
+    transform: none;
+  }
+
+  .atlas-scrim {
+    background: linear-gradient(
+      to top,
+      rgba(255, 249, 236, 0.9) 0%,
+      rgba(255, 249, 236, 0.6) 24%,
+      rgba(255, 249, 236, 0) 58%
+    );
+  }
+
+  .atlas-tile:active .atlas-media {
+    transform: scale(1.015);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atlas-frame {
+    opacity: 1;
+    transform: none;
+  }
+
+  .atlas-media {
+    transition: none;
+  }
+
+  .atlas-tile {
+    transition: opacity 120ms linear;
+  }
+}
+
+/* ---- Media wall footer note ---- */
+.atlas-note {
+  max-width: var(--max-width);
+  margin: var(--sp-2xl) auto 0;
+  padding-inline: var(--gutter);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-md);
+  border-top: 1px solid var(--clr-border);
+  padding-top: var(--sp-md);
+}
+
+.atlas-note p {
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+}
+
+/* ============================================
+   VIEWER — fullscreen media viewer
+   ============================================ */
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-modal) + 4);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 420ms var(--tr-base), visibility 420ms var(--tr-base);
+}
+
+.viewer.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.viewer-backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: #0D0622;
+}
+
+.viewer-bar {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-lg);
+  padding: var(--sp-md) var(--sp-lg);
+}
+
+.viewer-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-lg);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-widest);
+  text-transform: uppercase;
+  color: rgba(255, 249, 236, 0.62);
+  font-variant-numeric: tabular-nums;
+}
+
+.viewer-close,
+.viewer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 249, 236, 0.28);
+  color: #FFF9EC;
+  background-color: transparent;
+  transition: background-color 300ms var(--tr-base), border-color 300ms var(--tr-base), color 300ms var(--tr-base);
+}
+
+.viewer-close {
+  width: 42px;
+  height: 42px;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.viewer-close:hover,
+.viewer-nav:hover {
+  background-color: #FFF9EC;
+  border-color: #FFF9EC;
+  color: #5B2EFF;
+}
+
+/* Fits the natural aspect ratio — never crops, never stretches */
+.viewer-stage {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(3.5rem, 7vw, 7rem);
+}
+
+.viewer-frame {
+  --ratio: 1.5;
+  width: min(100%, calc((100vh - 15rem) * var(--ratio)));
+  aspect-ratio: var(--ratio);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewer-image,
+.viewer-video {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+}
+
+.viewer-image {
+  display: block;
+}
+
+.viewer-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  font-size: 1.05rem;
+  z-index: 2;
+}
+
+.viewer-prev {
+  left: clamp(0.6rem, 1.6vw, 1.6rem);
+}
+
+.viewer-next {
+  right: clamp(0.6rem, 1.6vw, 1.6rem);
+}
+
+.viewer-caption {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  padding: var(--sp-md) var(--sp-lg) var(--sp-xl);
+  text-align: center;
+}
+
+.viewer-title {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-black);
+  letter-spacing: var(--ls-tight);
+  text-transform: uppercase;
+  color: #FFF9EC;
+  margin: 0 0 4px;
+}
+
+.viewer-sub {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: rgba(255, 249, 236, 0.6);
+}
+
+@media (max-width: 767px) {
+  .viewer-bar {
+    padding: var(--sp-sm) var(--sp-md);
+  }
+
+  .viewer-stage {
+    padding: 0 1rem;
+  }
+
+  .viewer-frame {
+    width: min(100%, calc((100vh - 13rem) * var(--ratio)));
+  }
+
+  .viewer-nav {
+    top: auto;
+    bottom: -3.4rem;
+    transform: none;
+    width: 40px;
+    height: 40px;
+  }
+
+  .viewer-caption {
+    padding: var(--sp-4xl) var(--sp-md) var(--sp-md);
+  }
+
+  .viewer-title {
+    font-size: var(--fs-base);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viewer,
+  .viewer-close,
+  .viewer-nav {
+    transition: none;
+  }
+}

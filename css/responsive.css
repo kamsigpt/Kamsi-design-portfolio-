@@ -11,15 +11,6 @@
   .discipline-name {
     font-size: var(--fs-2xl);
   }
-
-  .work-grid .work-item.size-large {
-    grid-column: span 12;
-  }
-
-  .work-grid .work-item.size-medium,
-  .work-grid .work-item.size-small {
-    grid-column: span 6;
-  }
 }
 
 /* ---- Tablet: 768px - 991px ---- */
@@ -79,21 +70,6 @@
     margin-left: 0;
   }
 
-  .work-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .work-grid .work-item.size-large,
-  .work-grid .work-item.size-medium,
-  .work-grid .work-item.size-small,
-  .work-grid .work-item.size-full {
-    grid-column: span 1;
-  }
-
-  .work-grid .work-item.size-full {
-    aspect-ratio: 16 / 9;
-  }
-
   .cta-heading {
     font-size: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
   }
@@ -102,23 +78,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: var(--sp-lg);
-  }
-
-  /* Filters scroll */
-  .filters {
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .filters::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Project overlay */
-  .project-overlay-inner {
-    padding-top: var(--sp-3xl);
   }
 }
 
@@ -187,30 +146,6 @@
     grid-template-columns: 1fr;
   }
 
-  .work-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .work-grid .work-item.size-large,
-  .work-grid .work-item.size-medium,
-  .work-grid .work-item.size-small,
-  .work-grid .work-item.size-full {
-    grid-column: 1 / -1;
-  }
-
-  .work-item-overlay {
-    opacity: 1;
-  }
-
-  .work-item-title {
-    transform: none;
-  }
-
-  .work-item-arrow {
-    opacity: 1;
-    transform: none;
-  }
-
   .cred-timer {
     gap: var(--sp-md);
   }
@@ -241,46 +176,12 @@
   .footer-links {
     gap: var(--sp-lg);
   }
-
-  /* Work page */
-  .work-header {
-    padding-top: calc(var(--sp-4xl) + 40px);
-    padding-bottom: var(--sp-2xl);
-  }
-
-  .work-title {
-    font-size: clamp(3rem, 1.5rem + 5vw, 6rem);
-  }
-
-  .filters {
-    top: 56px;
-  }
-
-  .project-close {
-    top: var(--sp-md);
-    right: var(--sp-md);
-    width: 40px;
-    height: 40px;
-  }
-
-  .project-overlay-title {
-    font-size: var(--fs-2xl);
-  }
-
-  .project-nav {
-    flex-direction: column;
-    gap: var(--sp-xl);
-  }
 }
 
 /* ---- Small Mobile: below 480px ---- */
 @media (max-width: 479px) {
   :root {
     --gutter: 1rem;
-  }
-
-  .collage-tile-image {
-    aspect-ratio: 16 / 9;
   }
 
   .contact-modal-panel {
@@ -305,14 +206,6 @@
 
   .discipline-name {
     font-size: var(--fs-md);
-  }
-
-  .work-item-overlay {
-    padding: var(--sp-md);
-  }
-
-  .work-item-title {
-    font-size: var(--fs-lg);
   }
 
   .credentials {
