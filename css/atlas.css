@@ -33,13 +33,18 @@
   color: inherit;
   cursor: pointer;
   opacity: 1;
+  visibility: visible;
   transition:
     transform 620ms cubic-bezier(0.16, 1, 0.3, 1),
     opacity 420ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Filtered-out pieces are removed from paint and hit-testing outright.
+   Leaving them at opacity 0 alone kept them sitting at their old
+   coordinates, where they ghosted through the pieces still on screen. */
 .atlas-tile.is-out {
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
 }
 

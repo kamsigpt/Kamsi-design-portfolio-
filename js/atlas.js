@@ -300,40 +300,66 @@
     return { placements: placements, height: Math.max(0, y - gap) };
   }
 
-  /* Filtered subsets are recomposed rather than re-shrunk: spans
-     are re-derived from each piece's real aspect ratio. */
-  function deriveSpan(item, cols) {
-    if (cols <= 2) return item.ratio >= 1.5 ? 2 : 1;
-    if (item.ratio >= 2.2) return cols;
-    if (item.ratio >= 1.55) return Math.max(1, Math.round(cols * 0.67));
-    if (item.ratio >= 1.12) return Math.max(1, Math.round(cols * 0.5));
-    return cols >= 4 ? 2 : 1;
-  }
+  /* Filtered views collapse to one row of equal columns. A category
+     therefore always reads the same way — a single line, one rhythm —
+     rather than a ragged collage with empty tracks wherever a piece
+     was filtered out. Heights still follow each piece's real ratio. */
+  function packRow(list, track) {
+    var gap = track.gap;
+    var total = root.clientWidth;
+    if (!total || !list.length) return null;
 
-  function composeFiltered(list, cols) {
-    var bands = [];
-    var current = [];
-    var used = 0;
+    var n = list.length;
+    var colW = (total - (n - 1) * gap) / n;
+    var placements = {};
+    var tallest = 0;
 
-    list.forEach(function (item) {
-      var w = Math.min(deriveSpan(item, cols), cols);
-      if (used + w > cols && current.length) {
-        bands.push(current);
-        current = [];
-        used = 0;
-      }
-      current.push({ w: w, i: [item.id] });
-      used += w;
-      if (used === cols) {
-        bands.push(current);
-        current = [];
-        used = 0;
-      }
+    list.forEach(function (item, i) {
+      var h = colW / item.ratio;
+      placements[item.id] = { x: i * (colW + gap), y: 0, w: colW, h: h };
+      if (h > tallest) tallest = h;
     });
 
-    if (current.length) bands.push(current);
-    return bands;
+    return { placements: placements, height: tallest };
   }
+
+  function rowItemWidth(n, track) {
+    var total = root.clientWidth;
+    if (!total || !n) return 0;
+    return (total - (n - 1) * track.gap) / n;
+  }
+
+  /* When a single row would squeeze a category down to thumbnails —
+     eight pieces across a phone, for instance — fall back to an even
+     grid of equal cells. Still uniform, just wrapped, so the pieces
+     stay big enough to actually read. */
+  function packGrid(list, track) {
+    var gap = track.gap;
+    var total = root.clientWidth;
+    if (!total || !list.length) return null;
+
+    var cols = track.cols;
+    var colW = (total - (cols - 1) * gap) / cols;
+    var placements = {};
+    var y = 0;
+
+    for (var i = 0; i < list.length; i += cols) {
+      var row = list.slice(i, i + cols);
+      var tallest = 0;
+      row.forEach(function (item, j) {
+        var h = colW / item.ratio;
+        placements[item.id] = { x: j * (colW + gap), y: y, w: colW, h: h };
+        if (h > tallest) tallest = h;
+      });
+      y += tallest + gap;
+    }
+
+    return { placements: placements, height: Math.max(0, y - gap) };
+  }
+
+  // Narrowest a piece may get in a single-line view before it stops
+  // reading as the work and starts reading as a thumbnail.
+  var MIN_ROW_ITEM = 120;
 
   function visibleSet() {
     var set = {};
@@ -356,16 +382,24 @@
     var key = currentKey();
     var track = TRACKS[key];
     var visible = visibleSet();
-    var bands = activeFilter === 'all'
-      ? BANDS[key]
-      : composeFiltered(visibleList(), track.cols);
 
-    var result = pack(bands, visible, track);
+    var result;
+    if (activeFilter === 'all') {
+      result = pack(BANDS[key], visible, track);
+    } else {
+      var list = visibleList();
+      result = rowItemWidth(list.length, track) >= MIN_ROW_ITEM
+        ? packRow(list, track)
+        : packGrid(list, track);
+    }
     if (!result) return;
+
+    var total = root.clientWidth;
 
     MEDIA.forEach(function (item) {
       var tile = tiles[item.id];
       var slot = result.placements[item.id];
+      var wasOut = tile.classList.contains('is-out');
 
       if (!slot) {
         tile.classList.add('is-out');
@@ -377,10 +411,18 @@
       tile.classList.remove('is-out');
       tile.removeAttribute('aria-hidden');
       tile.tabIndex = 0;
+      // A piece brought back by a filter can't wait for the scroll
+      // reveal: while it was hidden it could never intersect.
+      if (wasOut) tile.classList.add('is-in');
       tile.classList.toggle('is-slim', slot.h < 165);
-      tile.style.width = Math.round(slot.w) + 'px';
+
+      // Rounding x and w independently can push the last column of a
+      // band a pixel past the canvas and raise a horizontal scrollbar.
+      var x = Math.round(slot.x);
+      var w = Math.min(Math.round(slot.w), Math.max(0, total - x));
+      tile.style.width = w + 'px';
       tile.style.height = Math.round(slot.h) + 'px';
-      tile.style.transform = 'translate3d(' + Math.round(slot.x) + 'px,' + Math.round(slot.y) + 'px,0)';
+      tile.style.transform = 'translate3d(' + x + 'px,' + Math.round(slot.y) + 'px,0)';
     });
 
     root.style.height = Math.round(result.height) + 'px';
