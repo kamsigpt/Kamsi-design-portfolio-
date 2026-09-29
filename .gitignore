@@ -15,8 +15,10 @@ npm-debug.log*
 # Node
 node_modules/
 
-# Assets placeholders (untracked real media)
-assets/images/*
+# Master (source) videos are large and stay on disk only. The site
+# serves the web-optimised, faststart copies in assets/videos/web/,
+# which are tracked. Design stills in assets/images/ are tracked.
 assets/videos/*
-!assets/images/.gitkeep
+!assets/videos/web/
+!assets/videos/web/*.mp4
 !assets/videos/.gitkeep

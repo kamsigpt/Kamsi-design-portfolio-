@@ -14,7 +14,7 @@
   var HAS_GSAP = typeof window.gsap !== 'undefined';
 
   var IMG_DIR = 'assets/images/';
-  var VID_DIR = 'assets/videos/';
+  var VID_DIR = 'assets/videos/web/';
   var POST_DIR = 'assets/posters/';
 
   function assetURL(dir, file) {
@@ -28,14 +28,14 @@
      measured, never assumed — the layout is driven by them.
      --------------------------------------------------------------- */
   var MEDIA = [
-    { id: 'hyle-motion', kind: 'video', w: 1920, h: 1080, file: 'hyle studios motion graphics ad.mp4', poster: 'hyle-studios-motion.jpg',
+    { id: 'hyle-motion', kind: 'video', w: 1920, h: 1080, file: 'hyle-motion.mp4', poster: 'hyle-studios-motion.jpg',
       name: 'HYLE STUDIOS', cat: 'Motion Graphics · Video', tags: ['motion', 'video', 'branding'] },
     { id: 'hyle-logo', kind: 'image', w: 1200, h: 896, file: 'hyle studios logo.jpg',
       name: 'HYLE STUDIOS', cat: 'Brand Identity · Logo', tags: ['branding'] },
     { id: 'hyle-merch', kind: 'image', w: 1536, h: 1024, file: 'hyle studio merch drop concept.jpg',
       name: 'HYLE STUDIOS', cat: 'Merch Drop · Product Design', tags: ['product', 'graphic'] },
 
-    { id: 'ko-showcase', kind: 'video', w: 1920, h: 1080, file: 'k.o design showcase.mp4', poster: 'ko-showcase.jpg',
+    { id: 'ko-showcase', kind: 'video', w: 1920, h: 1080, file: 'ko-showcase.mp4', poster: 'ko-showcase.jpg',
       name: 'K.O', cat: 'Design Showcase · Motion', tags: ['motion', 'video'] },
     { id: 'ko-shirt', kind: 'image', w: 1536, h: 1024, file: 'KO clothing shirt design.jpg',
       name: 'K.O', cat: 'Apparel Graphic Design', tags: ['graphic', 'product'] },
@@ -45,7 +45,7 @@
     { id: 'forgr', kind: 'image', w: 2560, h: 564, file: 'Forgr flow logo.jpg',
       name: 'FORGR FLOW', cat: 'Brand Identity · Wordmark', tags: ['branding'] },
 
-    { id: 'curio-video', kind: 'video', w: 1920, h: 1080, file: 'curio motion video.mp4', poster: 'curio.jpg',
+    { id: 'curio-video', kind: 'video', w: 1920, h: 1080, file: 'curio.mp4', poster: 'curio.jpg',
       name: 'CURIO', cat: 'Motion Design · Product Film', tags: ['motion', 'video', 'branding'] },
     { id: 'curio-logo', kind: 'image', w: 612, h: 408, file: 'Curio logo.jpg',
       name: 'CURIO', cat: 'Brand Identity · Logo', tags: ['branding'] },
@@ -59,9 +59,9 @@
     { id: 'bca', kind: 'image', w: 896, h: 1200, file: 'BCA Business card.jpg',
       name: 'BCA', cat: 'Business Card · Stationery', tags: ['branding', 'product'] },
 
-    { id: 'itel', kind: 'video', w: 1920, h: 1080, file: 'itel concept video complete.mp4', poster: 'itel.jpg',
+    { id: 'itel', kind: 'video', w: 1920, h: 1080, file: 'itel.mp4', poster: 'itel.jpg',
       name: 'ITEL', cat: 'Concept Video · Motion', tags: ['motion', 'video'] },
-    { id: 'renmoney', kind: 'video', w: 1920, h: 1080, file: 'Renmoney loans ad.mp4', poster: 'renmoney.jpg',
+    { id: 'renmoney', kind: 'video', w: 1920, h: 1080, file: 'renmoney.mp4', poster: 'renmoney.jpg',
       name: 'RENMONEY', cat: 'Loans Ad · Video Edit', tags: ['video'] },
     { id: 'vanguard', kind: 'image', w: 1440, h: 1028, file: 'vanguard flyer.jpg',
       name: 'VANGUARD', cat: 'Campaign Flyer', tags: ['graphic'] },
@@ -70,7 +70,7 @@
     { id: 'smartraq', kind: 'image', w: 2000, h: 2000, file: 'smartraq logo.jpg',
       name: 'SMARTRAX', cat: 'Brand Identity · Logo', tags: ['branding'] },
 
-    { id: 'portfolio-motion', kind: 'video', w: 1920, h: 1080, file: 'motion graphics for  portfolio.mp4', poster: 'portfolio-motion.jpg',
+    { id: 'portfolio-motion', kind: 'video', w: 1920, h: 1080, file: 'portfolio-motion.mp4', poster: 'portfolio-motion.jpg',
       name: 'MOTION REEL', cat: 'Motion Graphics · Title Sequence', tags: ['motion'] }
   ];
 
