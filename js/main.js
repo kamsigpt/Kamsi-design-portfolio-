@@ -230,16 +230,9 @@
       });
     }
 
-    // Featured collage
-    gsap.utils.toArray('.collage-tile').forEach((tile) => {
-      gsap.from(tile, {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: tile, start: 'top 88%', toggleActions: 'play none none none' },
-      });
-    });
+    // Featured collage: js/featured.js drives its own scroll reveal,
+    // because the layout transform on each tile is written by the
+    // packer and a GSAP tween on the same node would fight it.
 
     // Experience counter
     gsap.utils.toArray('.cred-timer').forEach((item) => {

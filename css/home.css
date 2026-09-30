@@ -363,11 +363,14 @@
   position: sticky;
   top: var(--sp-4xl);
   align-self: start;
-  aspect-ratio: 4 / 5;
+  /* Matched to the photo's own 1284 x 1225 frame so the subject is
+     never cropped by a hard portrait ratio. */
+  aspect-ratio: 1284 / 1225;
   background: linear-gradient(135deg, var(--clr-bg-medium), var(--clr-surface));
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid rgba(91, 46, 255, 0.35);
+  margin: 0;
 }
 
 .intro-visual::before {
@@ -375,6 +378,14 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, rgba(106, 137, 167, 0.15), transparent 60%);
+  pointer-events: none;
+}
+
+.intro-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* ---- Disciplines ---- */
@@ -453,7 +464,10 @@
   margin-left: auto;
 }
 
-/* ---- Selected Work ---- */
+/* ---- Selected Work ----
+   The preview is the gallery's own art-directed wall, so it reuses
+   the .atlas-* tile, scrim, caption and viewer styles rather than
+   restating them. */
 .selected-work {
   padding: var(--sp-2xl) 0 var(--sp-section);
 }
@@ -516,77 +530,15 @@
   transform: translateY(-2px);
 }
 
-/* ---- Featured Collage ---- */
-.featured-collage {
-  max-width: var(--max-width);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background-color: rgba(91, 46, 255, 0.28);
-  border: 1px solid rgba(91, 46, 255, 0.28);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+.selected-noscript {
+  padding: var(--sp-3xl) 0;
+  text-align: center;
+  color: var(--clr-text-secondary);
 }
 
-.collage-tile {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--clr-bg-dark);
-  cursor: pointer;
-  position: relative;
-  margin: 0;
-}
-
-.collage-tile-image {
-  overflow: hidden;
-  background: transparent;
-}
-
-.collage-tile-image--3x2 { aspect-ratio: 3 / 2; }
-.collage-tile-image--4x3 { aspect-ratio: 4 / 3; }
-.collage-tile-image--7x5 { aspect-ratio: 7 / 5; }
-
-.collage-tile-image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.collage-tile:hover .collage-tile-image img {
-  transform: scale(1.04);
-}
-
-.collage-tile-caption {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-2xs);
-  padding: var(--sp-md);
-}
-
-.collage-tile-name {
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-bold);
-  letter-spacing: var(--ls-wider);
-  text-transform: uppercase;
-  color: var(--clr-text-primary);
-}
-
-.collage-tile-title {
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-medium);
-  letter-spacing: var(--ls-wide);
-  text-transform: uppercase;
-  color: var(--clr-text-muted);
-}
-
-.collage-tile-year {
-  font-size: var(--fs-xs);
-  color: var(--clr-text-muted);
-  margin-top: var(--sp-2xs);
+.selected-noscript a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .image-placeholder {
@@ -595,11 +547,11 @@
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ---- Experience Counter ---- */
+/* ---- Experience Counter ----
+   No rules above or below: the counter runs edge to edge and is
+   sized to read as a headline, not as a footnote. */
 .credentials {
-  padding: var(--sp-3xl) 0;
-  border-top: 1px solid var(--clr-border);
-  border-bottom: 1px solid var(--clr-border);
+  padding: var(--sp-4xl) 0;
 }
 
 .cred-timer {
@@ -610,11 +562,11 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: var(--sp-lg);
+  gap: var(--sp-xl);
 }
 
 .cred-timer-label {
-  font-size: var(--fs-xs);
+  font-size: clamp(0.75rem, 0.4rem + 0.9vw, 1.25rem);
   font-weight: var(--fw-medium);
   letter-spacing: var(--ls-widest);
   text-transform: uppercase;
@@ -626,42 +578,44 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  gap: var(--sp-md);
+  gap: var(--sp-sm) var(--sp-md);
 }
 
 .timer-unit {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 84px;
 }
 
 .timer-number {
-  font-size: var(--fs-4xl);
+  font-size: clamp(2.75rem, 1rem + 6vw, 6rem);
   font-weight: var(--fw-black);
-  line-height: 1;
+  line-height: 0.9;
+  letter-spacing: var(--ls-tighter);
   color: var(--clr-text-primary);
   font-variant-numeric: tabular-nums;
 }
 
 .timer-unit-label {
-  font-size: var(--fs-xs);
+  font-size: clamp(0.75rem, 0.4rem + 0.9vw, 1.375rem);
+  font-weight: var(--fw-medium);
   letter-spacing: var(--ls-widest);
   text-transform: uppercase;
   color: var(--clr-text-muted);
-  margin-top: var(--sp-xs);
+  margin-top: var(--sp-sm);
 }
 
 .timer-sep {
-  font-size: var(--fs-3xl);
-  font-weight: var(--fw-medium);
+  font-size: clamp(1.5rem, 0.75rem + 2vw, 3rem);
+  font-weight: var(--fw-light);
   color: var(--clr-text-muted);
-  line-height: 1;
-  padding-top: var(--sp-2xs);
+  line-height: 0.9;
+  padding-top: 0.1em;
 }
 
 .cred-timer-caption {
-  font-size: var(--fs-sm);
+  font-size: clamp(1.125rem, 0.6rem + 1.4vw, 2rem);
+  font-weight: var(--fw-medium);
   color: var(--clr-text-secondary);
   letter-spacing: var(--ls-wide);
 }

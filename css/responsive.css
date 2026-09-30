@@ -51,8 +51,8 @@
   }
 
   .intro-visual {
-    aspect-ratio: 16 / 9;
-    max-height: 400px;
+    aspect-ratio: 1284 / 1225;
+    max-width: 520px;
   }
 
   .discipline-item {
@@ -142,20 +142,12 @@
     align-items: flex-start;
   }
 
-  .featured-collage {
-    grid-template-columns: 1fr;
-  }
-
   .cred-timer {
-    gap: var(--sp-md);
-  }
-
-  .timer-unit {
-    min-width: 58px;
+    gap: var(--sp-lg);
   }
 
   .timer-number {
-    font-size: var(--fs-2xl);
+    font-size: clamp(2.25rem, 1rem + 5vw, 3rem);
   }
 
   .cta-heading {
@@ -209,7 +201,7 @@
   }
 
   .credentials {
-    padding: var(--sp-xl) 0;
+    padding: var(--sp-3xl) 0;
   }
 
   .cta-section {

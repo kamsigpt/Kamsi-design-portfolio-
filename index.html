@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kamsi Okoro — Graphic Designer · Motion Designer · Video Editor</title>
     <meta name="description" content="Portfolio of Kamsi Okoro — Graphic Designer, Motion Designer and Video Editor creating visual identities, motion and visual stories.">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/design-system.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/work.css">
+    <link rel="stylesheet" href="css/atlas.css">
     <link rel="stylesheet" href="css/responsive.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
@@ -76,7 +80,9 @@
                 <p>Everything I make starts with a concept. I'm not interested in decoration for its own sake. I want the work to mean something, feel considered and hold up under a second look. I obsess over the details most people won't consciously notice — because those are the details that make something feel right.</p>
                 <p>What sets the work apart is that it doesn't sit still. It shifts between disciplines without losing a clear point of view. That's intentional. The best visual work doesn't care about categories. It just needs to connect.</p>
             </div>
-            <div class="intro-visual" aria-hidden="true"></div>
+            <figure class="intro-visual">
+                <img class="intro-photo" src="assets/aout%20me%20photo/casual%20fit%20pic%20update.png" alt="Kamsi Okoro" width="1284" height="1225" loading="lazy" decoding="async">
+            </figure>
         </div>
     </section>
 
@@ -114,52 +120,11 @@
             </div>
             <a href="work.html" class="section-view-btn">VIEW ALL IN GALLERY →</a>
         </div>
-        <div class="featured-collage">
-
-            <figure class="collage-tile">
-                <div class="collage-tile-image collage-tile-image--3x2">
-                    <img src="assets/images/KO%20clothing%20shirt%20design.jpg" alt="K.O clothing shirt design" width="1536" height="1024" loading="lazy" decoding="async">
-                </div>
-                <figcaption class="collage-tile-caption">
-                    <span class="collage-tile-name">K.O</span>
-                    <span class="collage-tile-title">SHIRT DESIGN</span>
-                    <span class="collage-tile-year">2024</span>
-                </figcaption>
-            </figure>
-
-            <figure class="collage-tile">
-                <div class="collage-tile-image collage-tile-image--3x2">
-                    <img src="assets/images/hyle%20studio%20merch%20drop%20concept.jpg" alt="Hyle Studio merch drop concept" width="1536" height="1024" loading="lazy" decoding="async">
-                </div>
-                <figcaption class="collage-tile-caption">
-                    <span class="collage-tile-name">HYLE STUDIOS</span>
-                    <span class="collage-tile-title">MERCH DROP CONCEPT</span>
-                    <span class="collage-tile-year">2024</span>
-                </figcaption>
-            </figure>
-
-            <figure class="collage-tile">
-                <div class="collage-tile-image collage-tile-image--4x3">
-                    <img src="assets/images/hyle%20studios%20logo.jpg" alt="Hyle Studios logo" width="1200" height="896" loading="lazy" decoding="async">
-                </div>
-                <figcaption class="collage-tile-caption">
-                    <span class="collage-tile-name">HYLE STUDIOS</span>
-                    <span class="collage-tile-title">BRAND IDENTITY</span>
-                    <span class="collage-tile-year">2024</span>
-                </figcaption>
-            </figure>
-
-            <figure class="collage-tile">
-                <div class="collage-tile-image collage-tile-image--7x5">
-                    <img src="assets/images/vanguard%20flyer.jpg" alt="Vanguard campaign flyer" width="1440" height="1028" loading="lazy" decoding="async">
-                </div>
-                <figcaption class="collage-tile-caption">
-                    <span class="collage-tile-name">VANGUARD</span>
-                    <span class="collage-tile-title">CAMPAIGN FLYER</span>
-                    <span class="collage-tile-year">2024</span>
-                </figcaption>
-            </figure>
-
+        <div class="atlas selected-atlas">
+            <div class="atlas-canvas" id="featured-collage"></div>
+            <noscript>
+                <p class="selected-noscript">Enable JavaScript to view the preview, or browse the <a href="work.html">gallery</a>.</p>
+            </noscript>
         </div>
     </section>
 
@@ -262,5 +227,6 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/featured.js"></script>
 </body>
 </html>
